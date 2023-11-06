@@ -15,7 +15,7 @@ Sistemul de garantie-returnare ambalaje nereutilizabile, gestionat de comerciant
       - culoare ambalaj
 
   3. Pagina: Operare inregistrare colectare ambalaje de la consumatori
-    - Se actualizeaza ( adaugare, modificare, stergere ) urmatoarele informatii:</li>
+    - Se actualizeaza ( adaugare, modificare, stergere ) urmatoarele informatii:
       - denumire unitate comerciant ( autocompletare ) ;
       - data predare ambalaje ( implicit data curenta );
       - nume, prenume, loc. domiciliu consumator ;
