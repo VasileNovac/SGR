@@ -7,14 +7,14 @@ Sistemul de garantie-returnare ambalaje nereutilizabile, gestionat de comerciant
   Comanda Next executa navigarea de la o pagina la alta
   
   1. Pagina: Initializare
-    - Se selecteaza unitatea care comercializeaza ambalaje
+     - Se selecteaza unitatea care comercializeaza ambalaje
     - Se actualizeaza ( adaugare, modificare, stergere) urmatoarele caracteristici:
       - categorie ambalaje
       - valoare garantie/categorie/bucata ambalaj - lei
       - interval capacitate ambalaj - litri
       - culoare ambalaj
 
-  2. Pagina: Operare inregistrare colectare ambalaje de la consumatori
+  3. Pagina: Operare inregistrare colectare ambalaje de la consumatori
     - Se actualizeaza ( adaugare, modificare, stergere ) urmatoarele informatii:</li>
       - denumire unitate comerciant ( autocompletare ) ;
       - data predare ambalaje ( implicit data curenta );
@@ -27,8 +27,8 @@ Sistemul de garantie-returnare ambalaje nereutilizabile, gestionat de comerciant
       - valoare totala ambalaje predate: lei , calculata ;
     - Comanda generare voucher valoric
 
-  3. Pagina: Afisare/listare emitere voucher valoric
+  4. Pagina: Afisare/listare emitere voucher valoric
       - Confirmare predare voucher la consumator
      
-  4. Pagina: Situatii statistice
+  5. Pagina: Situatii statistice
      
