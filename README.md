@@ -7,7 +7,7 @@ Sistemul de garantie-returnare ambalaje nereutilizabile, gestionat de comerciant
   Comanda Next executa navigarea de la o pagina la alta
   
   1. Pagina: Initializare
-     - Se selecteaza unitatea care comercializeaza ambalaje
+    - Se selecteaza unitatea care comercializeaza ambalaje
     - Se actualizeaza ( adaugare, modificare, stergere) urmatoarele caracteristici:
       - categorie ambalaje
       - valoare garantie/categorie/bucata ambalaj - lei
