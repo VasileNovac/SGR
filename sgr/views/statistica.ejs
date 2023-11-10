@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Statistica</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    </head>
+    <body>
+        <h2> Situatii statistice</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <form action="/statistica" method="POST" class="form">
+                    <fieldset>
+                        <label for="deladata">&#129095; De la data :
+                            <input id="deladata" name="deladata" type="text" onmouseover="(this.type='date')" value="" onchange="funcD('deladata', 'deladata')" required>
+                        </label>
+                        <label for="panaladata">&#129095; Pana la data:
+                            <input id="panaladata" name="panaladata" type="text" onmouseover="(this.type='date')" value="" onchange="funcD('panaladata', 'panaladata')" required>
+                        </label>
+                    </fieldset>
+                    <input type="submit" value="Validare">
+                </form>
+            </div>
+            <div class="grid-item">
+                <% if ( deladata != "" && panaladata != "") { %>
+                    <div class="voucher">
+                        <p> In perioada cuprinsa intre <%= deladata %> si <%= panaladata %> au fost colectate urmatoarele ambalaje:</p>
+                        <table style="margin-left: auto; margin-right: auto;">
+                            <tr>
+                                <th>Categorie</th>
+                                <th>Cantitate</th>
+                            </tr>
+                            <% for( let i=0; i<arrCateg.length; i++) { %>
+                            <tr>
+                                <td><%= arrCateg[i] %></td>
+                                <td><%= arrTotal[i] %></td>
+                            </tr>
+                            <% } %>
+                        </table>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+        <div id="app"></div>
+        <script src="/javascripts/myscript.js"></script>
+    </body>
+</html>

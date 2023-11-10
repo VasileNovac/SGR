@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Init</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <% if ( opUnitc == "DEL" || opCateg == "DEL" || opColor == "DEL") { %>
+            <script>
+                alert( "Exista valoare - Pentru operatia de:\n- MODIFICARE => Stergere , apoi valoarea noua si => Adaugare\n- ADAUGARE => se introduce valoarea apoi => Adaugare\n- STERGERE =>  Stergere" );
+            </script>
+        <% } %>
+        <% if ( opGarant == "DEL") { %>
+            <script>
+                alert( "Exista valoarea afisata - Pentru operatia de:\n- MODIFICARE => introduceti noua valoare si => Modificare" );
+            </script>
+        <% } %>
+    </head>
+    <body>
+        <h2>Operare informatii predefinite si initializare sesiune de lucru</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <form action="/init/initUnitc" method="POST" class="form">
+                    <fieldset>
+                        <label for="unitc">&#129095; Unitate comerciant: 
+                            <input id="unitc" type="text" name="unitc" value="<%= antValUnitc %>" required>
+                        </label>
+                    </fieldset>
+                    <% if ( opUnitc == "ADD") { %>
+                        <input type="hidden" name="opinput" value="ADD">
+                        <input type="submit" value="Adaugare">
+                    <% } %>
+                    <% if ( opUnitc == "DEL") { %>
+                        <input type="hidden" name="opinput" value="DEL">
+                        <input type="submit" value="Adaugare">
+                        <input type="submit" value="Stergere">
+                    <% } %>
+                </form>
+            </div>
+            <div class="grid-item">
+                <form action="/init/initCateg" method="POST" class="form">
+                    <fieldset>
+                        <label for="categ">&#129095; Categorie ambalaj:
+                            <input id="categ" type="text" name="categ" value="<%= antValCateg %>" required>
+                        </label>
+                    </fieldset>
+                    <% if ( opCateg == "ADD") { %>
+                        <input type="hidden" name="opinput" value="ADD">
+                        <input type="submit" value="Adaugare">
+                    <% } %>
+                    <% if ( opCateg == "DEL") { %>
+                        <input type="hidden" name="opinput" value="DEL">
+                        <input type="submit" value="Adaugare">
+                        <input type="submit" value="Stergere">
+                    <% } %>
+                </form>
+            </div>
+            <div class="grid-item">
+                <form action="/init/initCapac" method="POST" class="form">
+                    <fieldset>
+                        <label for="min">&#129095; Capacitate ambalaj - litri - val.minima: 
+                            <input id="min" type="number" name="min" min = 0 step = 0.01 value="<%= antValCapacMin %>" required>
+                        </label>
+                       <label for="max">&#129095; Capacitate ambalaj - litri - val.maxima: 
+                            <input id="max" type="number" name="max" min = 0 step = 0.01 value="<%= antValCapacMax %>" required>
+                        </label>
+                    </fieldset>
+                    <% if ( opCapac == "ADD") { %>
+                        <input type="submit" value="Adaugare">
+                    <% } %>
+                    <% if ( opCapac == "DEL") { %>
+                        <input type="submit" value="Modificare">
+                    <% } %>
+                </form>
+            </div>
+            <div class="grid-item">
+                <form action="/init/initColor" method="POST" class="form">
+                    <fieldset>
+                        <label for="color">&#129095; Culoare ambalaj:
+                            <input id="color" type="text" name="color" value="<%= antValColor %>" required>
+                        </label>
+                    </fieldset>
+                    <% if ( opColor == "ADD") { %>
+                        <input type="hidden" name="opinput" value="ADD">
+                        <input type="submit" value="Adaugare">
+                    <% } %>
+                    <% if ( opColor == "DEL") { %>
+                        <input type="hidden" name="opinput" value="DEL">
+                        <input type="submit" value="Adaugare">
+                        <input type="submit" value="Stergere">
+                    <% } %>
+                </form>
+            </div>
+            <div class="grid-item">
+                <form action="/init/initGarant" method="POST" class="form">
+                    <fieldset>
+                        <label for="gcateg">&#129095; Categorie ambalaj:
+                            <select id="gcateg" name="gcateg" required>
+                                <% if ( opGarant == "ADD") { %>
+                                    <option value="">(select one)</option>
+                                    <% for (let i = 0; i < arrCateg.length; i++) { %>
+                                        <option value=<%= i %>><%= arrCateg[i] %></option>
+                                        <% } %>
+                                <% } %>
+                                <% if ( opGarant == "DEL") { %>
+                                    <option value=<%= antValGCateg %>><%= arrCateg[antValGCateg] %></option>
+                                <% } %>
+                            </select>
+                        </label>
+                        <label for="garant">&#129095; Val.garantie/categorie/buc. ambalaj - lei: 
+                            <input id="garant" type="number" name="garant" min="0" step="0.01" value="<%= antValGarant %>" required>
+                        </label>
+                    </fieldset>
+                    <% if ( opGarant == "ADD") { %>
+                        <input type="submit" value="Adaugare">
+                    <% } %>
+                    <% if ( opGarant == "DEL") { %>
+                        <input type="submit" value="Modificare">
+                    <% } %>
+                </form>
+            </div>
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">
+                <video width="400" height="300" autoplay loop muted>
+                    <source src="/images/reclamaSGR.mp4" type="video/mp4">
+                </video>
+                <p>SONOR => click dreapta mouse -> Unmute</p>
+            </div>
+        </div>
+        <div id="app"></div>
+        <script src="/javascripts/myscript.js"></script>
+    </body>
+</html>

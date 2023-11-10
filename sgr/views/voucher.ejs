@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Voucher</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+        <% if ( nrConsumator == 0 || nrVoucher == 0 ) { %>
+            <script>
+                alert( "Nu exista voucher" );
+            </script>
+        <% } %>
+    </head>
+    <body>
+        <h2>Afisare/listare emitere voucher valoric</h2>
+        <div class="grid-container">
+            <div class="grid-item"><b>Selectare voucher</b>
+                <form action="/voucher/generare" method="POST" class="form">
+                    <fieldset>
+                        <label for="datam">&#129095; Data predare ambalaje: 
+                            <input id="datam" name="datam" type="text" onmouseover="(this.type='date')" value="<%= datam %>" onchange="funcD('datam', 'datam')" required>
+                        </label>
+                        <label for="nume">&#129095; Nume si Prenume consumator: 
+                            <input id="nume" name="nume" type="text" onchange="funcUC('nume','nume')" value="<%= nume %>" required>
+                        </label>
+                        <label for="loco">&#129095; Localitate domiciliu consumator: 
+                            <input id="loco" name="loco" type="text" onchange="funcUC('loco','loco')" value="<%= loco %>" required>
+                        </label>
+                    </fieldset>
+                    <input type="submit" value="Select voucher">
+                </form>
+            </div>
+            <div class="grid-item">
+                <div class="voucher">
+                    <p class="voucher-left">Unitatea emitenta: <%= unitc %></p>
+                    <p>Nr. voucher: ..... /Data emiterii: <%= datam %></p>
+                    <p>Domnul/Doamna <%= nume %> cu domiciliul in localitatea <%= loco %>
+                    a predat ambalaje in valoare totala de <% if (nrConsumator != 0 && nrVoucher != 0) { %> <%= total %> <% } else { %> <%= 0 %> <% } %> lei</p>
+                    <p>Termenul de valabilitate/restituire este de 12 luni de la data emiterii.</p>
+                    <p class="voucher-left">Cod QR sau cod bare</p>
+                </div>
+                <fieldset>
+                    <label for="confirm">
+                      <input id="confirm" type="checkbox" name="confirm" class="inline" /> Confirmare primire voucher de catre consumator
+                    </label>
+                  </fieldset>
+            </div>
+        </div>
+        <div id="app"></div>
+        <script src="/javascripts/myscript.js"></script>
+    </body>
+</html>

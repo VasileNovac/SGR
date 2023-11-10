@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SGR ambalaje nereutilizabile, gestionat de comercianti </title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img class="img-recy" src="/images/recycling.png" alt="Recycling">
+            </div>
+            <div class="grid-item">
+                <h1><%= titlu %></h1>
+                <h3>Sistemul de garantie-returnare ambalaje nereutilizabile, gestionat de comercianti respecta prevederile HG 1074/2021 privind stabilirea sistemului de garanție – returnare pentru ambalaje primare nereutilizabile, cu modificarile si adaugirile ulterioare.</h3>
+            </div>
+        </div>
+        <div class="grid-container" style="justify-content:left">
+            <div class="grid-item">
+                <img class="img-code" src="/images/recycling-code.jpg" alt="Recycling Code">
+            </div>
+            <div class="grid-item" style="margin:0px 40px 0px 50px;">
+                <p><b>Instructiuni de operare</b></p>
+                <ul>
+                    <li>Comanda Next executa navigarea de la o pagina la alta</li>
+                    <br>
+                    <li>Pagina: Initializare
+                        <ul>
+                            <li>Se selecteaza unitatea care comercializeaza ambalaje</li>
+                            <li>Se actualizeaza ( adaugare, modificare, stergere) urmatoarele caracteristici:</li>
+                            <ul>
+                                <li>categorie ambalaje</li>
+                                <li>valoare garantie/categorie/bucata ambalaj - lei</li>
+                                <li>interval capacitate ambalaj - litri</li>
+                                <li>culoare ambalaj</li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <br>
+                    <li>Pagina: Operare inregistrare colectare ambalaje de la consumatori
+                        <ul>
+                            <li>Se actualizeaza ( adaugare, modificare, stergere ) urmatoarele informatii:</li>
+                            <ul>
+                                <li>denumire unitate comerciant ( autocompletare ) ;</li>
+                                <li>data predare ambalaje ( implicit data curenta );</li>
+                                <li>nume, prenume, loc. domiciliu consumator ;</li>
+                                <li>categorie ambalaj: dropdown ;</li>
+                                <li>capacitate ambalaj: dropdown ;</li>
+                                <li>culoare ambalaj: dropdown ;</li>
+                                <li>valoare garantie/categorie/bucata ambalaj: lei (autocompletare) ;</li>
+                                <li>cantitate ambalaje: numar bucati ;</li>
+                                <li>valoare totala ambalaje predate: lei , calculata ;</li>
+                            </ul>
+                            <br>
+                            <li>Comanda generare voucher valoric</li>
+                        </ul>
+                    </li>
+                    <br>
+                    <li>Pagina: Afisare/listare emitere voucher valoric</li>
+                    <ul>
+                        <li>Confirmare predare voucher la consumator</li>
+                    </ul>
+                    <br>
+                    <li>Pagina: Situatii statistice</li>
+                </ul>
+            </div>
+            <div class="grid-item">
+                <img class="img-color" src="/images/recycling-color.jpg" alt="Recycling Color">
+                <img class="img-color" src="/images/recycling-icons.jpg" alt="Recycling Icons">
+            </div>
+        </div>
+        <div id="app"></div>
+        <footer><h4>Copyright - 2023. All rights reserved.</h4></footer>
+        <script src="/javascripts/myscript.js"></script>
+    </body>
+</html>

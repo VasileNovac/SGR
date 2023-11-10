@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inregistrare</title>
+        <link rel="stylesheet" href="/stylesheets/style.css">
+    </head>
+    <body>
+        <h2>Operare inregistrare colectare ambalaje de la consumatori</h2>
+        <div class="grid-container">
+            <div class="grid-item">
+                <img class="img-code" src="/images/Plastic-Codes.jpg" alt="Plastic Codes">
+            </div>
+            <div class="grid-item">
+                <form action="/inregistrare/add" method="POST" id="form" class="form">
+                    <fieldset>
+                        <label for="unitc">&#129095; Unitate comerciant: 
+                            <select id="unitc" name="unitc" required>
+                                <% if ( antValUnitc == "" ) { %>
+                                    <option value="">(select one)</option>
+                                    <% for (let i = 0; i < arrUnitc.length; i++) { %>
+                                    <option value="<%= arrUnitc[i] %>"><%= arrUnitc[i] %></option>
+                                    <% } %>
+                                <% } %>
+                                <% if ( antValUnitc != "" ) { %>
+                                    <option value="<%= antValUnitc %>"><%= antValUnitc %></option>
+                                <% } %>
+                            </select>
+                        </label>
+                        <label for="datam">&#129095; Data predare ambalaje: 
+                            <input id="datam" name="datam" type="text" value="<%= datam %>" readonly>
+                        </label>
+                        <label for="nume">&#129095; Nume si Prenume consumator: 
+                            <input id="nume" name="nume" type="text" onchange="funcUC('nume','nume')" value="<% if ( arrConsumator.length != 0) { %> <%= arrConsumator[0].nume %> <% } %>" required>
+                        </label>
+                        <label for="loco">&#129095; Localitate domiciliu consumator: 
+                            <input id="loco" name="loco" type="text" onchange="funcUC('loco','loco')" value="<% if ( arrConsumator.length != 0) { %> <%= arrConsumator[0].loco %> <% } %>" required>
+                        </label>
+                        <label for="categ">&#129095; Categorie ambalaj:
+                            <select id="categ" name="categ" required> 
+                                <option value="">(select one)</option>
+                                <% for (let i = 0; i < arrCateg.length; i++) { %>
+                                <option value=<%= i %>><%= arrCateg[i] %></option>
+                                <% } %>
+                            </select>
+                        </label>
+                        <label for="capac">&#129095; Capacitate ambalaj - litri: 
+                            <input id="capac" name="capac" type="number" min = "<%= arrCapac.get('min') %>" max = "<%= arrCapac.get('max') %>" step="0.01" required>
+                        </label>
+                        <label for="color">&#129095; Culoare ambalaj:
+                            <select id="color" name="color" required>
+                                <option value="">(select one)</option>
+                                <% for (let i = 0; i < arrColor.length; i++) { %>
+                                <option value=<%= i %>><%= arrColor[i] %></option>
+                                <% } %>
+                            </select>
+                        </label>
+                        <label for="cant">&#129095; Cantitate ambalaje - bucati: 
+                            <input id="cant" name="cant" type="number" min="0" step="1" required>
+                        </label>
+                        <label for="garant">&#129095; Val.garantie/categorie/buc. ambalaj - lei: 
+                            <select id="garant" name="garant" required>
+                                <option value="">(select one)</option>
+                                <% let i = 0 ; %>
+                                <% arrGarant.forEach((value, key) => { %>
+                                <option value=<%= i %>><%= key + "=" + value %></option>
+                                <% i = i + 1; %>
+                                <% }) %>
+                            </select>
+                        </label>
+                    </fieldset>
+                    <input type="submit" value="Adaugare">
+                </form>
+            </div>
+            <div class="grid-item">
+                <h2>Ambalaje predate de un consumator</h2>
+                <form action="/inregistrare/mrow" method="POST" id="modif">
+                    <table>
+                        <tr>
+                            <th>Categorie</th>
+                            <th>Capacitate</th>
+                            <th>Culoare</th>
+                            <th>Cantitate</th>
+                            <th>Val. garantie</th>
+                            <th>Total</th>
+                        </tr>
+                        <% for( let i=0; i<arrAmbalaj.length; i++) { %>
+                        <tr ondblclick="funcModif(this)">
+                            <td><%= arrAmbalaj[i].categ %></td>
+                            <td><%= arrAmbalaj[i].capac %></td>
+                            <td><%= arrAmbalaj[i].color %></td>
+                            <td><%= arrAmbalaj[i].cant %></td>
+                            <td><%= arrAmbalaj[i].garant %></td>
+                            <td><%= arrAmbalaj[i].unitTotal %></td>
+                        </tr>
+                        <% } %>
+                    </table>
+                    <input type="hidden" id="opinput" name="opinput" value=0>
+                </form>
+                <br><br>
+                <table>
+                    <tr>
+                        <td><b>Total - lei : </b></td>
+                        <td><%= total %></td>
+                    </tr>
+                </table>
+                <br><br>
+                <div>
+                    <b>MODIFICARE</b> - dublu click pe un rand ;
+                    <br>
+                    <b>STERGERE</b> - la cantitate = 0 ;
+                </div>
+                <form action="/inregistrare/wrVoucher" method="POST" style="margin-top:30px" class="form">
+                    <input type="submit" value="Generare VOUCHER">
+                </form>
+                <% if ( rand !=0 ) { %>
+                    <form action="/inregistrare/change" method="POST" style="margin-top:30px" class="form">
+                        <fieldset>
+                        <label for="categ">&#129095; Categorie ambalaj:
+                            <select id="categ" name="categ" required> 
+                                <option value=-1><%= arrAmbalaj[rand-1].categ %></option>
+                                <% for (let i = 0; i < arrCateg.length; i++) { %>
+                                <option value=<%= i %>><%= arrCateg[i] %></option>
+                                <% } %>
+                            </select>
+                        </label>
+                        <label for="capac">&#129095; Capacitate ambalaj - litri: 
+                            <input id="capac" name="capac" type="number" min = "<%= arrCapac.get('min') %>" max = "<%= arrCapac.get('max') %>" step="0.01" value= <%= arrAmbalaj[rand-1].capac %> required>
+                        </label>
+                        <label for="color">&#129095; Culoare ambalaj:
+                            <select id="color" name="color" required>
+                                <option value=-1><%= arrAmbalaj[rand-1].color %></option>
+                                <% for (let i = 0; i < arrColor.length; i++) { %>
+                                <option value=<%= i %>><%= arrColor[i] %></option>
+                                <% } %>
+                            </select>
+                        </label>
+                        <label for="cant">&#129095; Cantitate ambalaje - bucati: 
+                            <input id="cant" name="cant" type="number" min="0" step="1" value= <%= arrAmbalaj[rand-1].cant %> required>
+                        </label>
+                        <label for="garant">&#129095; Val.garantie/categorie/buc. ambalaj - lei: 
+                            <select id="garant" name="garant" required>
+                                <option value=-1><%= arrAmbalaj[rand-1].garant %></option>
+                                <% let i = 0 ; %>
+                                <% arrGarant.forEach((value, key) => { %>
+                                <option value=<%= i %>><%= key + "=" + value %></option>
+                                <% i = i + 1; %>
+                                <% }) %>
+                            </select>
+                        </label>
+                        </fieldset>
+                        <input type="submit" value="Modificare">
+                    </form>
+                <% } %>
+            </div>
+            <div class="grid-item">
+                <img class="img-pet" src="/images/recycling-pet.jpg" alt="Recycling Pet">
+                <img class="img-pet" src="/images/recycling-glass.jpg" alt="Recycling Glass">
+                <img class="img-pet" src="/images/recycling-doze-al.jpg" alt="Recycling Doze Al">
+            </div>
+        </div>
+        <div id="app"></div>
+        <script src="/javascripts/myscript.js"></script>
+    </body>
+</html>
