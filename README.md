@@ -4,7 +4,7 @@ Sistem de garantie-returnare ambalaje
 Sistemul de garantie-returnare ambalaje nereutilizabile, gestionat de comercianti respecta prevederile HG 1074/2021 privind stabilirea sistemului de garanție – returnare pentru ambalaje primare nereutilizabile, cu modificarile si adaugirile ulterioare.
   Instructiuni de operare
   
-	Comanda Next executa navigarea de la o pagina la alta
+  Comanda Next executa navigarea de la o pagina la alta
   
   1. Pagina: Initializare
     - Se selecteaza unitatea care comercializeaza ambalaje
