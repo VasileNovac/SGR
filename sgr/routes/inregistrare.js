@@ -44,55 +44,38 @@ async function runWrite(colectie, doc) {
 }
 
 router.get('/', (req, res, next) => {
-  if ( arrUnitc.length == 0 && arrCateg.length == 0 && arrCapac.length == 0 && arrColor.length == 0 && arrGarant.length == 0) {
+  // read a JSON file
+  // reading a JSON file asynchronously
 
-    // read a JSON file
-    // reading a JSON file asynchronously
-
-    fs.readFile("sgrInit.json", (err, dataObj, next) => {
-      if (err) {
-        console.log(err);
-        throw err;
-      }
-        // parsing the JSON object to convert it to a JavaScript object
-      const sgrInit = JSON.parse(dataObj);
-  
-      arrUnitc = sgrInit.arrUnitc ;
-      arrCateg = sgrInit.arrCateg;
-      arrCapac = new Map(sgrInit.arrCapac) ;
-      arrColor = sgrInit.arrColor ;
-      arrGarant = new Map(sgrInit.arrGarant) ;
-      datam = sgrInit.datam ;
-
-      res.render('inregistrare', {
-        arrUnitc, 
-        arrCateg, 
-        arrCapac, 
-        arrColor, 
-        arrGarant,
-        datam,
-        arrConsumator,
-        arrAmbalaj,
-        antValUnitc,
-        total,
-        rand
-      })
-    })
-  } else {
-      res.render('inregistrare', {
-        arrUnitc, 
-        arrCateg, 
-        arrCapac, 
-        arrColor, 
-        arrGarant,
-        datam,
-        arrConsumator,
-        arrAmbalaj,
-        antValUnitc,
-        total,
-        rand
-      })
+  fs.readFile("sgrInit.json", (err, dataObj, next) => {
+    if (err) {
+      console.log(err);
+      throw err;
     }
+      // parsing the JSON object to convert it to a JavaScript object
+    const sgrInit = JSON.parse(dataObj);
+
+    arrUnitc = sgrInit.arrUnitc ;
+    arrCateg = sgrInit.arrCateg;
+    arrCapac = new Map(sgrInit.arrCapac) ;
+    arrColor = sgrInit.arrColor ;
+    arrGarant = new Map(sgrInit.arrGarant) ;
+    datam = sgrInit.datam ;
+
+    res.render('inregistrare', {
+      arrUnitc, 
+      arrCateg, 
+      arrCapac, 
+      arrColor, 
+      arrGarant,
+      datam,
+      arrConsumator,
+      arrAmbalaj,
+      antValUnitc,
+      total,
+      rand
+    })
+  })
 })
 
 

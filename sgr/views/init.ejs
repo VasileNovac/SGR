@@ -23,7 +23,7 @@
                 <form action="/init/initUnitc" method="POST" class="form">
                     <fieldset>
                         <label for="unitc">&#129095; Unitate comerciant: 
-                            <input id="unitc" type="text" name="unitc" value="<%= antValUnitc %>" required>
+                            <input id="unitc" type="text" name="unitc" value="<%= antValUnitc %>" onchange="funcUC('unitc','unitc')" required>
                         </label>
                     </fieldset>
                     <% if ( opUnitc == "ADD") { %>

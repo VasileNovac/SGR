@@ -19,34 +19,22 @@ app.use(express.urlencoded({ extended: true })) ;
 const { MongoClient } = require("mongodb");
 
 router.get('/', (req, res, next) => {
-  if ( unitc == "" && datam == "" && nume == "" && loco == "" && total == 0) {
-    fs.readFile("sgrVoucher.json", (err, voucher, next) => {
-      if (err) {
-        console.log(err);
-        throw err;
-    }
-      // parsing the JSON object to convert it to a JavaScript object
-      const sgrVoucher = JSON.parse(voucher);
+  fs.readFile("sgrVoucher.json", (err, voucher, next) => {
+    if (err) {
+      console.log(err);
+      throw err;
+  }
+    // parsing the JSON object to convert it to a JavaScript object
+    const sgrVoucher = JSON.parse(voucher);
 
-      unitc = sgrVoucher.unitc;
-      datam = sgrVoucher.datam;
-      nume = sgrVoucher.nume;
-      loco = sgrVoucher.loco;
-      total = sgrVoucher.total;
-      nrConsumator = 1;
-      nrVoucher = 1;
+    unitc = sgrVoucher.unitc;
+    datam = sgrVoucher.datam;
+    nume = sgrVoucher.nume;
+    loco = sgrVoucher.loco;
+    total = sgrVoucher.total;
+    nrConsumator = 1;
+    nrVoucher = 1;
       
-      res.render('voucher', {
-        unitc,
-        datam,
-        nume,
-        loco,
-        total,
-        nrConsumator,
-        nrVoucher
-      })
-    })
-  } else {
     res.render('voucher', {
       unitc,
       datam,
@@ -56,7 +44,7 @@ router.get('/', (req, res, next) => {
       nrConsumator,
       nrVoucher
     })
-  }
+  })
 })
 
 router.post('/generare', function (req, res, next) {
