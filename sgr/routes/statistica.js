@@ -72,7 +72,6 @@ router.post('/', (req, res, next) => {
             if ( arrCateg.indexOf(xCateg) != -1 ) {
               arrTotal[arrCateg.indexOf(xCateg)] +=  Number(doc.ambalaj[i].cant) ;
             }
-
           }
         }
       }
