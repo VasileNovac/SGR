@@ -94,3 +94,4 @@ function funcModif(xrow) {
     document.getElementById("opinput").value = xrow.rowIndex;
     document.getElementById("modif").submit();
 }
+

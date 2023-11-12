@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SGR ambalaje nereutilizabile, gestionat de comercianti </title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelector("#loader-wrapper").style.display = "none";
+            });
+        </script>
         <link rel='stylesheet' href='/stylesheets/style.css' />
     </head>
     <body>
+
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+        </div>
+    
         <div class="grid-container">
             <div class="grid-item">
                 <img class="img-recy" src="/images/recycling.png" alt="Recycling">

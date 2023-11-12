@@ -4,6 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Init</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelector("#loader-wrapper").style.display = "none";
+            });
+        </script>
         <link rel="stylesheet" href="/stylesheets/style.css">
         <% if ( opUnitc == "DEL" || opCateg == "DEL" || opColor == "DEL") { %>
             <script>
@@ -17,6 +22,11 @@
         <% } %>
     </head>
     <body>
+
+        <div id="loader-wrapper">
+			<div id="loader"></div>
+        </div>
+
         <h2>Operare informatii predefinite si initializare sesiune de lucru</h2>
         <div class="grid-container">
             <div class="grid-item">
